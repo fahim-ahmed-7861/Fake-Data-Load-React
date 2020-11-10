@@ -1,23 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
+import data from './data/data.json';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
+
+  console.log(data);
+
+  const [users,setUsers]=useState([])
+
+
+
+  useEffect(() => {
+
+       setUsers(data);
+  },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     
+     <h1 style={{padding:'20px'}}>Fake Data Load</h1>
+
+     <ul>
+
+  {
+     users.map((user=><div>
+       <li>{user.last_name}</li>
+       <img src={user.image}></img>
+       </div>))
+  }
+     </ul>
     </div>
   );
 }
